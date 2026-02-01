@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence de Crise - Propagande</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFFBEB 0%, #FDE68A 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 100%);
+        }
+
+        .header h1 {
+            font-size: 48px;
+            color: #1E3A8A;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .header .subtitle {
+            font-size: 28px;
+            color: #F59E0B;
+            font-weight: 600;
+        }
+
+        .section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #F59E0B 0%, #FBBF24 100%);
+            border-radius: 20px 0 0 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1E3A8A;
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #F59E0B;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #1E3A8A;
+        }
+
+        .tools-list {
+            margin: 40px 0;
+        }
+
+        .tool-item {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            padding: 24px 35px;
+            margin: 18px 0;
+            border-left: 5px solid #F59E0B;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #1E3A8A;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.25);
+        }
+
+        .definition-section {
+            margin-top: 50px;
+        }
+
+        .definition-prompt {
+            margin: 40px 0;
+        }
+
+        .definition-prompt strong {
+            display: block;
+            font-size: 24px;
+            color: #1E3A8A;
+            margin-bottom: 20px;
+        }
+
+        .definition-space {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            border: 2px dashed #F59E0B;
+            border-radius: 12px;
+            min-height: 150px;
+            padding: 20px;
+        }
+
+        .instruction-text {
+            margin-top: 50px;
+            font-size: 22px;
+            color: #1E3A8A;
+            font-weight: 600;
+            text-align: center;
+            padding: 35px;
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            border-radius: 16px;
+            border-left: 5px solid #F59E0B;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+            line-height: 1.6;
+        }
+
+        /* Styles pour la page Restitution */
+        .content-block {
+            margin-bottom: 45px;
+        }
+
+        .block-title {
+            font-size: 30px;
+            color: #1E3A8A;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #F59E0B;
+            position: relative;
+        }
+
+        .block-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #1E3A8A;
+        }
+
+        .block-text {
+            font-size: 18px;
+            color: #1F2937;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .block-text.emphasis {
+            font-weight: 600;
+            color: #1E3A8A;
+            font-size: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            border-radius: 12px;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .block-quote {
+            font-style: italic;
+            color: #6B7280;
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            padding: 15px 20px;
+            border-left: 4px solid #F59E0B;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .highlight-block {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .definition-main {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1E3A8A;
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            padding: 28px;
+            border-radius: 16px;
+            margin: 25px 0;
+            text-align: center;
+            border: 3px solid #F59E0B;
+            box-shadow: 0 6px 25px rgba(245, 158, 11, 0.25);
+        }
+
+        .tools-summary {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .summary-intro {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-bottom: 15px;
+        }
+
+        .summary-list {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .summary-list li {
+            font-size: 17px;
+            color: #1F2937;
+            padding: 5px 0;
+        }
+
+        .summary-conclusion {
+            font-size: 17px;
+            color: #6B7280;
+            font-style: italic;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #E5E7EB;
+        }
+
+        .tool-detail {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%);
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 16px;
+            border-left: 5px solid #F59E0B;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .tool-detail:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .tool-detail-title {
+            font-size: 24px;
+            color: #1E3A8A;
+            font-weight: bold;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #FEF3C7;
+        }
+
+        .tool-definition {
+            font-size: 17px;
+            color: #1F2937;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .tool-definition strong {
+            color: #1E3A8A;
+        }
+
+        .tool-note {
+            font-size: 16px;
+            color: #6B7280;
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        .tool-section {
+            margin: 20px 0;
+        }
+
+        .tool-section strong {
+            color: #1E3A8A;
+            font-size: 17px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .tool-section ul {
+            margin-left: 25px;
+        }
+
+        .tool-section li {
+            color: #1F2937;
+            padding: 4px 0;
+            line-height: 1.6;
+        }
+
+        .tool-section.solution {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            padding: 20px 25px;
+            border-radius: 12px;
+            border-left: 4px solid #F59E0B;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+            margin-top: 20px;
+        }
+
+        .tool-section.solution strong {
+            color: #1E3A8A;
+            font-size: 18px;
+        }
+
+        .tool-section.solution p {
+            color: #1F2937;
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .sub-list {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        .sub-list li {
+            color: #1F2937;
+            padding: 4px 0;
+        }
+
+        .channels-simple-list {
+            margin: 25px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .channels-simple-list li {
+            font-size: 18px;
+            color: #1F2937;
+            padding: 15px 20px;
+            margin: 12px 0;
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            border-left: 4px solid #F59E0B;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .channels-simple-list li:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Styles pour l'Endoctrinement */
+        .differences-box {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid #F59E0B;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+        }
+
+        .differences-box strong {
+            color: #1E3A8A;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .differences-box ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .differences-box li {
+            padding: 6px 0;
+            color: #1F2937;
+            font-size: 17px;
+        }
+
+        .emphasis-note {
+            color: #F59E0B;
+            font-weight: 600;
+            font-size: 17px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .caracteristics-box {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .caracteristics-box strong {
+            color: #1E3A8A;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .caracteristics-box ul {
+            margin-left: 25px;
+        }
+
+        .caracteristics-box li {
+            padding: 6px 0;
+            color: #1F2937;
+            font-size: 17px;
+        }
+
+        .key-tool-box {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 25px 0;
+            border-left: 5px solid #F59E0B;
+            box-shadow: 0 6px 25px rgba(245, 158, 11, 0.25);
+        }
+
+        .key-tool-box h4 {
+            color: #1E3A8A;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .wolof-quote {
+            font-style: italic;
+            color: #6B7280;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .translation {
+            color: #F59E0B;
+            font-weight: 600;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .targets-list {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .targets-list strong {
+            color: #1E3A8A;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .targets-list ul {
+            margin-left: 25px;
+        }
+
+        .targets-list li {
+            padding: 6px 0;
+            color: #1F2937;
+            font-size: 17px;
+        }
+
+        .types-section {
+            margin-top: 40px;
+        }
+
+        .types-section h4 {
+            color: #1E3A8A;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #FEF3C7;
+        }
+
+        .type-detail {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%);
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 16px;
+            border-left: 5px solid #F59E0B;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .type-detail:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .type-header {
+            color: #1E3A8A;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .type-list {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .type-list li {
+            padding: 6px 0;
+            color: #1F2937;
+            font-size: 17px;
+        }
+
+        .type-evolution {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .type-evolution p {
+            margin: 8px 0;
+            color: #1F2937;
+            font-size: 16px;
+        }
+
+        .type-evolution strong {
+            color: #1E3A8A;
+        }
+
+        .type-note {
+            color: #F59E0B;
+            font-weight: 600;
+            font-size: 16px;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        .differences-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .differences-box strong {
+            color: #1E3A8A;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .differences-box ul {
+            margin-left: 25px;
+        }
+
+        .differences-box li {
+            padding: 5px 0;
+        }
+
+        .key-tool-box {
+            background: #FEF3C7;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .key-tool-box strong {
+            color: #1E3A8A;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .types-endoctrinement {
+            margin-top: 25px;
+        }
+
+        .sub-title {
+            font-size: 20px;
+            color: #1E3A8A;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+        }
+
+        .type-endoc {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .type-label {
+            color: #1E3A8A;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .type-endoc ul {
+            margin-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        .type-endoc li {
+            padding: 4px 0;
+        }
+
+        .type-note {
+            font-size: 15px;
+            color: #6B7280;
+            font-style: italic;
+            margin: 8px 0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #F59E0B;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .tool-card h3 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1E3A8A;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tool-card p {
+            font-size: 16px;
+            color: #6B7280;
+            line-height: 1.6;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            border-left: 4px solid #F59E0B;
+            padding: 24px;
+            margin: 20px 0;
+            border-radius: 16px;
+        }
+
+        .definition-box strong {
+            color: #1E3A8A;
+            font-size: 18px;
+        }
+
+        .definition-box em {
+            color: #6B7280;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .channel-item {
+            background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .solution-item {
+            background: white;
+            border-left: 4px solid #F59E0B;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .solution-item strong {
+            color: #1E3A8A;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .solution-item p {
+            color: #6B7280;
+            font-size: 15px;
+        }
+
+        .endoctrinement-section {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .endoctrinement-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .endoctrinement-section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .targets-box {
+            background: rgba(255,255,255,0.15);
+            padding: 24px;
+            border-radius: 16px;
+            margin: 20px 0;
+            border-left: 4px solid white;
+        }
+
+        .targets-box h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .targets-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .targets-box li {
+            padding: 8px 0;
+            font-size: 16px;
+        }
+
+        .targets-box strong {
+            color: white;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .type-box {
+            background: rgba(255,255,255,0.15);
+            padding: 24px;
+            border-radius: 16px;
+            border-left: 4px solid white;
+        }
+
+        .type-box h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .type-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .type-box li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .type-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: white;
+            font-weight: bold;
+        }
+
+        .type-box p {
+            margin-top: 15px;
+            font-size: 14px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .documentary {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 3px solid #F59E0B;
+        }
+
+        .documentary h2 {
+            font-size: 28px;
+            color: #6B7280;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .documentary .doc-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1E3A8A;
+            margin: 20px 0;
+        }
+
+        .documentary .doc-subtitle {
+            font-size: 24px;
+            color: #F59E0B;
+            font-weight: 600;
+        }
+
+        .documentary .doc-author {
+            font-size: 20px;
+            color: #6B7280;
+            margin-top: 15px;
+        }
+
+        .workshops {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .workshop-list {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .workshop-item {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            padding: 20px 24px;
+            border-radius: 12px;
+            border-left: 4px solid #F59E0B;
+            font-size: 16px;
+            color: #1F2937;
+            transition: transform 0.3s ease;
+        }
+
+        .workshop-item:hover {
+            transform: translateX(8px);
+        }
+
+        .workshop-item strong {
+            color: #1E3A8A;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-grid,
+            .channels-grid,
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>INTELLIGENCE DE CRISE</h1>
+            <div class="subtitle">Propagande</div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Outils</h2>
+            <div class="tools-list">
+                <div class="tool-item">Désinformation</div>
+                <div class="tool-item">Fausse information</div>
+                <div class="tool-item">Intox</div>
+                <div class="tool-item">Psyop</div>
+            </div>
+
+            <div class="instruction-text">
+                A travers ces outils (un ou plusieurs) définissez La propagande et L'endoctrinement.
+            </div>
+        </div>
+
+        <!-- Page Restitution -->
+        <div class="section">
+            <h2 class="section-title">Restitution</h2>
+
+            <div class="definition-main">
+                Propagande = manipulation de la perception
+            </div>
+
+            <div class="content-block">
+                <p class="block-text">
+                    La propagande n'est pas juste "mentir", c'est travailler la perception mentale des gens pour qu'ils pensent choisir librement, alors qu'en réalité leur choix est téléguidé.
+                </p>
+                <p class="block-text">
+                    Tu crois choisir, mais ta décision a été préparée à l'avance.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <p class="block-text emphasis">
+                    La propagande repose sur la coordination de plusieurs outils, utilisés de manière simultanée et stratégique.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 class="block-title">Les outils de la propagande</h3>
+                <p class="block-text">
+                    La propagande s'appuie principalement sur quatre outils :
+                </p>
+
+                <div class="tool-detail">
+                    <h4 class="tool-detail-title">Désinformation</h4>
+                    <p class="tool-definition">
+                        Création volontaire d'informations fausses ou altérées dans le but d'orienter les individus vers un raisonnement précis.
+                    </p>
+                    <div class="tool-section solution">
+                        <strong>Solution à la désinformation :</strong>
+                        <p>Vérification, ne pas se fier à une seule source.</p>
+                    </div>
+                </div>
+
+                <div class="tool-detail">
+                    <h4 class="tool-detail-title">Intox</h4>
+                    <p class="tool-definition">
+                        Créer des doutes, de confusion ou de fausses pistes afin de détourner l'attention des éléments essentiels.
+                    </p>
+                    <div class="tool-section solution">
+                        <strong>Solution :</strong>
+                        <p>Tey</p>
+                    </div>
+                </div>
+
+                <div class="tool-detail">
+                    <h4 class="tool-detail-title">Fausse information</h4>
+                    <p class="tool-definition">
+                        Information pouvant être partiellement vraie mais sortie de son contexte, mal interprétée ou diffusée à un moment stratégique (mauvais timing).
+                    </p>
+                    <div class="tool-section solution">
+                        <strong>Solution :</strong>
+                        <p>Faire un trier</p>
+                    </div>
+                </div>
+
+                <div class="tool-detail">
+                    <h4 class="tool-detail-title">Psyop (Psychological Operations)</h4>
+                    <p class="tool-definition">
+                        Actions visant à influencer le mental, les émotions et les comportements des individus.
+                    </p>
+                    <div class="tool-section solution">
+                        <strong>Solution :</strong>
+                        <p>Le doute intelligent, douter pour chercher la vérité, pas pour douter sans fin</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3 class="block-title">Les canaux de diffusion de la propagande</h3>
+                <p class="block-text">
+                    La propagande se diffuse à travers différents canaux :
+                </p>
+                <ul class="channels-simple-list">
+                    <li>Les médias (presse, télévision, réseaux sociaux)</li>
+                    <li>Le téléphone et les plateformes numériques</li>
+                    <li>La science (discours d'experts, études, chiffres)</li>
+                    <li>Les amplificateurs (leaders d'opinion, influenceurs, autorités, institutions)</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3 class="block-title">Endoctrinement (plus fort que la propagande)</h3>
+                
+                <div class="definition-main">Définition</div>
+                <p class="block-text">
+                    L'endoctrinement est une forme extrême de propagande.
+                </p>
+
+                <div class="differences-box">
+                    <strong>Différences clés :</strong>
+                    <ul>
+                        <li>La propagande vise l'individu</li>
+                        <li>L'endoctrinement vise la foule</li>
+                    </ul>
+                    <p class="emphasis-note">La foule ne pense pas, elle réagit</p>
+                </div>
+
+                <div class="caracteristics-box">
+                    <strong>C'est :</strong>
+                    <ul>
+                        <li>Un lavage de cerveau</li>
+                        <li>Une suppression de l'esprit critique</li>
+                    </ul>
+                </div>
+
+                <div class="key-tool-box">
+                    <h4>Outil principal de l'endoctrinement : l'école</h4>
+                    <p class="wolof-quote">« école do xalaat da ngay tari »</p>
+                    <p class="translation">On ne t'apprend pas à penser, on t'apprend à répéter</p>
+                </div>
+
+                <div class="targets-list">
+                    <strong>Groupes souvent ciblés :</strong>
+                    <ul>
+                        <li>Enfants</li>
+                        <li>Femmes</li>
+                        <li>Populations vulnérables</li>
+                    </ul>
+                </div>
+
+                <div class="types-section">
+                    <h4>Les deux types d'endoctrinement</h4>
+                    
+                    <div class="type-detail">
+                        <div class="type-header">1. Endoctrinement actif</div>
+                        <ul class="type-list">
+                            <li>Séries</li>
+                            <li>Films</li>
+                            <li>Politique</li>
+                        </ul>
+                        <div class="type-evolution">
+                            <p><strong>Au début :</strong> Ce n'est ni propagande ni endoctrinement</p>
+                            <p><strong>Progressivement :</strong> Les messages deviennent idéologiques</p>
+                        </div>
+                    </div>
+
+                    <div class="type-detail">
+                        <div class="type-header">2. Endoctrinement passif</div>
+                        <ul class="type-list">
+                            <li>Médecine</li>
+                            <li>Religion</li>
+                            <li>Sport</li>
+                            <li>Musique</li>
+                        </ul>
+                        <p class="type-note">Ici, les messages sont intégrés sans que tu t'en rendes compte</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
